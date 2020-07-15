@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhang.webcrawleres.dao.ArticleItemMapper">
+    <select id="queryAll" resultType="com.zhang.webcrawleres.pojo.ArticleItem">
+        select * from crawler.article_items
+    </select>
+
+    <insert id="addArticleItem" keyProperty="id" useGeneratedKeys="true" parameterType="com.zhang.webcrawleres.pojo.ArticleItem">
+        insert into crawler.article_items values
+        (#{id},#{articleTitle},#{description},#{articleAuthor},#{articleDate},#{articleLabel},#{articleGood},#{articleUrl})
+    </insert>
+
+    <select id="queryLimit" resultType="com.zhang.webcrawleres.pojo.ArticleItem">
+        select * from crawler.article_items limit #{start},#{num}
+    </select>
+</mapper>
